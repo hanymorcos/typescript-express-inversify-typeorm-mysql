@@ -33,6 +33,6 @@ export class UserController {
 
   @Delete('/:id')
   public async deleteUser(request: Request): Promise<IUser> {
-    return await this.userService.deleteUser(request.params.email);
+    return await this.userService.deleteUser(request.params.id);
   }
 }
