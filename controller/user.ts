@@ -28,11 +28,11 @@ export class UserController {
 
   @Put('/:id')
   public async updateUser(request: Request): Promise<IUser> {
-    return await this.userService.updateUser(request.params.id, request.body);
+    return await this.userService.updateUser(request.params.name, request.params.email);
   }
 
   @Delete('/:id')
   public async deleteUser(request: Request): Promise<IUser> {
-    return await this.userService.deleteUser(request.params.id);
+    return await this.userService.deleteUser(request.params.email);
   }
 }

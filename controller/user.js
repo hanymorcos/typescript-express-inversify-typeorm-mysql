@@ -89,7 +89,7 @@ var UserController = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.userService.updateUser(request.params.id, request.body)];
+                    case 0: return [4 /*yield*/, this.userService.updateUser(request.params.name, request.params.email)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -99,7 +99,7 @@ var UserController = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.userService.deleteUser(request.params.id)];
+                    case 0: return [4 /*yield*/, this.userService.deleteUser(request.params.email)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
