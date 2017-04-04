@@ -38,12 +38,14 @@ var UserService = (function () {
             resolve(user);
         });
     };
-    UserService.prototype.updateUser = function (id, user) {
+    UserService.prototype.updateUser = function (id, name) {
         var userRepository = typeorm_1.getEntityManager().getRepository(t_user_1.User);
         var userT = userRepository.findOne({ email: id });
         userT.then(function (u) {
-            u.name = user.name;
-            userRepository.persist(u);
+            var uentity = new t_user_1.User();
+            uentity.email = id;
+            uentity.name = name;
+            userRepository.persist(uentity);
         });
         return userT;
     };

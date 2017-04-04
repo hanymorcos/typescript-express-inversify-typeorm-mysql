@@ -46,22 +46,23 @@ export class UserService {
   });
   }
 
-  public updateUser(id: string, user: IUser): Promise<IUser> {
-   let userRepository = getEntityManager().getRepository(User);
-   let userT = userRepository.findOne({email:id});
+  public updateUser(id: string, name: string): Promise<IUser> {
+   var userRepository = getEntityManager().getRepository(User);
+   var userT = userRepository.findOne({email:id});
     userT.then((u) => {
-       u.name = user.name;
-       userRepository.persist(u);
+      
+       let uentity: User = new User();
+       uentity.email  = id;
+       uentity.name = name;
+       userRepository.persist(uentity);
     });
-
-
+    
     return userT;
   }
 
   public deleteUser(id: string) : Promise<IUser>{
-   
-  let userRepository = getEntityManager().getRepository(User);
-   let userT = userRepository.findOne({email:id});
+  var userRepository = getEntityManager().getRepository(User);
+   var userT = userRepository.findOne({email:id});
     userT.then((u) => {
        userRepository.remove(u);
     });
