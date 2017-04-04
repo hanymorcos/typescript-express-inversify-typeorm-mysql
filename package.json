@@ -1,0 +1,41 @@
+{
+  "name": "inversify-express-example",
+  "version": "1.0.0",
+  "description": "Examples for using inversify with expressjs",
+  "author": "lholznagel",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "1.17.1",
+    "express": "5.0.0-alpha.5",
+    "helmet": "3.5.0",
+    "inversify": "3.3.0",
+    "inversify-binding-decorators": "3.0.0",
+    "inversify-express-utils": "3.3.0",
+    "inversify-logger-middleware": "3.0.0",
+    "mongodb": "2.2.25",
+    "morgan": "1.8.1",
+    "mysql": "^2.13.0",
+    "reflect-metadata": "0.1.10",
+    "typeorm": "0.0.11"
+  },
+  "devDependencies": {
+    "@types/bluebird": "3.5.2",
+    "@types/body-parser": "1.16.2",
+    "@types/chai": "3.4.35",
+    "@types/express": "4.0.35",
+    "@types/mocha": "2.2.40",
+    "@types/helmet": "0.0.34",
+    "@types/mongodb": "2.1.41",
+    "@types/morgan": "1.7.32",
+    "chai": "3.5.0",
+    "mocha": "3.2.0",
+    "nyc": "10.2.0",
+    "ts-node": "2.0.0",
+    "typescript": "2.2.2"
+  },
+  "nyc": {
+    "exclude": [
+      "**/*.spec.ts"
+    ]
+  }
+}
