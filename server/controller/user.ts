@@ -5,7 +5,7 @@ import { Request, Response, NextFunction} from 'express';
 import TYPES from '../constant/types';
 
 @injectable()
-@Controller('/user')
+@Controller('/api/user')
 export class UserController {
 
   constructor(@inject(TYPES.UserService) private userService: UserService) { }

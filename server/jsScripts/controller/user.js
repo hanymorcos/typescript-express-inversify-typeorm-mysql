@@ -139,7 +139,7 @@ __decorate([
 ], UserController.prototype, "deleteUser", null);
 UserController = __decorate([
     inversify_1.injectable(),
-    inversify_express_utils_1.Controller('/user'),
+    inversify_express_utils_1.Controller('/api/user'),
     __param(0, inversify_1.inject(types_1.default.UserService)),
     __metadata("design:paramtypes", [user_1.UserService])
 ], UserController);
