@@ -2,6 +2,8 @@ import 'reflect-metadata';
 import { interfaces, Controller, InversifyExpressServer, TYPE } from 'inversify-express-utils';
 import { Container } from 'inversify';
 import * as bodyParser from 'body-parser';
+import * as express from "express";
+import { join } from "path";
 import TYPES from './constant/types';
 import TAGS from './constant/tags';
 import { HomeController } from './controller/home';
@@ -56,6 +58,8 @@ class Startup
                       extended: true
                     }));
                     app.use(bodyParser.json());
+                    
+                    app.use('/client', express.static(join(__dirname, '../../client')));
                   });
 
                 let app = server.build();

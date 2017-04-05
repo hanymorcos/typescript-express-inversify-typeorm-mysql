@@ -4,6 +4,8 @@ require("reflect-metadata");
 var inversify_express_utils_1 = require("inversify-express-utils");
 var inversify_1 = require("inversify");
 var bodyParser = require("body-parser");
+var express = require("express");
+var path_1 = require("path");
 var types_1 = require("./constant/types");
 var tags_1 = require("./constant/tags");
 var home_1 = require("./controller/home");
@@ -12,11 +14,6 @@ var user_2 = require("./service/user");
 var t_user_1 = require("./entity/t_user");
 var typeorm_1 = require("typeorm");
 var ConfigProvider_1 = require("./ConfigProvider");
-// load everything needed to the Container
-var container = new inversify_1.Container();
-container.bind(inversify_express_utils_1.TYPE.Controller).to(home_1.HomeController).whenTargetNamed(tags_1.default.HomeController);
-container.bind(inversify_express_utils_1.TYPE.Controller).to(user_1.UserController).whenTargetNamed(tags_1.default.UserController);
-container.bind(types_1.default.UserService).to(user_2.UserService);
 var Startup = (function () {
     function Startup() {
     }
@@ -42,6 +39,11 @@ var Startup = (function () {
         });
     };
     Startup.prototype.startExpressServer = function () {
+        // load everything needed to the Container
+        var container = new inversify_1.Container();
+        container.bind(inversify_express_utils_1.TYPE.Controller).to(home_1.HomeController).whenTargetNamed(tags_1.default.HomeController);
+        container.bind(inversify_express_utils_1.TYPE.Controller).to(user_1.UserController).whenTargetNamed(tags_1.default.UserController);
+        container.bind(types_1.default.UserService).to(user_2.UserService);
         // start the server
         var server = new inversify_express_utils_1.InversifyExpressServer(container);
         server.setConfig(function (app) {
@@ -49,6 +51,7 @@ var Startup = (function () {
                 extended: true
             }));
             app.use(bodyParser.json());
+            app.use('/client', express.static(path_1.join(__dirname, '../../client')));
         });
         var app = server.build();
         app.listen(3000);
