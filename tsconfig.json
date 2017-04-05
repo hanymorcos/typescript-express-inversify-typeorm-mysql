@@ -9,6 +9,7 @@
         ],
         "noImplicitAny": false,
         "sourceMap": true,
+         "outDir": "./jsScripts",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "moduleResolution": "node"
