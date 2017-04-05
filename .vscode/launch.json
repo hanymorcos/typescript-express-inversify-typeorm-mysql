@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${file}",
-            "outFiles":  [ "${workspaceRoot}/jsScripts/*.js" ]
+            "outFiles":  [ "${workspaceRoot}/server/jsScripts/*.js" ]
         },
         {
             "type": "node",
@@ -17,7 +17,7 @@
             "name": "Attach to Process",
             "address": "localhost",
             "port": 5858,
-            "outFiles":  [ "${workspaceRoot}/jsScripts/*.js" ]
+            "outFiles":  [ "${workspaceRoot}/server/jsScripts/*.js" ]
         }
     ]
 }

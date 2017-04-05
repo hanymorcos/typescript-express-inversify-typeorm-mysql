@@ -1,8 +1,8 @@
 {
   "name": "inversify-express-example",
   "version": "1.0.0",
-  "description": "Examples for using inversify with expressjs",
-  "author": "lholznagel",
+  "description": "Simple example with major components in Typescript",
+  "author": "HH",
   "license": "MIT",
   "dependencies": {
     "body-parser": "1.17.1",
