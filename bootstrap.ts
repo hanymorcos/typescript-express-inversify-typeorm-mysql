@@ -12,12 +12,6 @@ import { createConnection } from 'typeorm'
 import { ConfigProvider } from './ConfigProvider'
 import { injectable, inject} from 'inversify';
 
-// load everything needed to the Container
-let container = new Container();
-
-container.bind<interfaces.Controller>(TYPE.Controller).to(HomeController).whenTargetNamed(TAGS.HomeController);
-container.bind<interfaces.Controller>(TYPE.Controller).to(UserController).whenTargetNamed(TAGS.UserController);
-container.bind<UserService>(TYPES.UserService).to(UserService);
 
 class Startup 
 {
@@ -47,6 +41,14 @@ class Startup
 
     private startExpressServer ()
     {
+
+        // load everything needed to the Container
+        let container = new Container();
+        
+        container.bind<interfaces.Controller>(TYPE.Controller).to(HomeController).whenTargetNamed(TAGS.HomeController);
+        container.bind<interfaces.Controller>(TYPE.Controller).to(UserController).whenTargetNamed(TAGS.UserController);
+        container.bind<UserService>(TYPES.UserService).to(UserService);
+
          // start the server
                   let server = new InversifyExpressServer(container);
                   server.setConfig((app) => {
