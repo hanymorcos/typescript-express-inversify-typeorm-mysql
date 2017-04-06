@@ -9,16 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var inversify_express_utils_1 = require("inversify-express-utils");
-var inversify_1 = require("inversify");
-var HomeController = (function () {
-    function HomeController() {
-    }
-    HomeController.prototype.get = function () {
+const inversify_express_utils_1 = require("inversify-express-utils");
+const inversify_1 = require("inversify");
+let HomeController = class HomeController {
+    get() {
         return 'Home sweet home';
-    };
-    return HomeController;
-}());
+    }
+};
 __decorate([
     inversify_express_utils_1.Get('/'),
     __metadata("design:type", Function),

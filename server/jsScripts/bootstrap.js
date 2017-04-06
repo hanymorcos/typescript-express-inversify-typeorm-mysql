@@ -1,25 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
-var inversify_express_utils_1 = require("inversify-express-utils");
-var inversify_1 = require("inversify");
-var bodyParser = require("body-parser");
-var express = require("express");
-var path_1 = require("path");
-var types_1 = require("./constant/types");
-var tags_1 = require("./constant/tags");
-var home_1 = require("./controller/home");
-var user_1 = require("./controller/user");
-var user_2 = require("./service/user");
-var t_user_1 = require("./entity/t_user");
-var typeorm_1 = require("typeorm");
-var ConfigProvider_1 = require("./ConfigProvider");
-var Startup = (function () {
-    function Startup() {
-    }
-    Startup.prototype.server = function () {
-        var _this = this;
-        var config = ConfigProvider_1.ConfigProvider;
+const inversify_express_utils_1 = require("inversify-express-utils");
+const inversify_1 = require("inversify");
+const bodyParser = require("body-parser");
+const express = require("express");
+const path_1 = require("path");
+const types_1 = require("./constant/types");
+const tags_1 = require("./constant/tags");
+const home_1 = require("./controller/home");
+const user_1 = require("./controller/user");
+const user_2 = require("./service/user");
+const t_user_1 = require("./entity/t_user");
+const typeorm_1 = require("typeorm");
+const ConfigProvider_1 = require("./ConfigProvider");
+class Startup {
+    server() {
+        let config = ConfigProvider_1.ConfigProvider;
         // create database connection 
         typeorm_1.createConnection({
             driver: {
@@ -34,31 +31,30 @@ var Startup = (function () {
                 t_user_1.User
             ],
             autoSchemaSync: true,
-        }).then(function () {
-            _this.startExpressServer();
+        }).then(() => {
+            this.startExpressServer();
         });
-    };
-    Startup.prototype.startExpressServer = function () {
+    }
+    startExpressServer() {
         // load everything needed to the Container
-        var container = new inversify_1.Container();
+        let container = new inversify_1.Container();
         container.bind(inversify_express_utils_1.TYPE.Controller).to(home_1.HomeController).whenTargetNamed(tags_1.default.HomeController);
         container.bind(inversify_express_utils_1.TYPE.Controller).to(user_1.UserController).whenTargetNamed(tags_1.default.UserController);
         container.bind(types_1.default.UserService).to(user_2.UserService);
         // start the server
-        var server = new inversify_express_utils_1.InversifyExpressServer(container);
-        server.setConfig(function (app) {
+        let server = new inversify_express_utils_1.InversifyExpressServer(container);
+        server.setConfig((app) => {
             app.use(bodyParser.urlencoded({
                 extended: true
             }));
             app.use(bodyParser.json());
             app.use('/client', express.static(path_1.join(__dirname, '../../client')));
         });
-        var app = server.build();
+        let app = server.build();
         app.listen(3000);
         console.log('Server started on port 3000 :)');
-    };
-    return Startup;
-}());
-var startup = new Startup();
+    }
+}
+let startup = new Startup();
 startup.server();
 //# sourceMappingURL=bootstrap.js.map

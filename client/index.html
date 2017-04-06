@@ -1,5 +1,35 @@
-<html>
-    <body>
-        test 1 2 3 
-        </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>My Angular App!</title>
+
+    <!-- required for angular routing -->
+    <base href="/">
+
+    <!-- css -->
+    <!-- load bootstrap and some simple css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>body { padding: 50px 0; }</style>
+
+    <!-- js -->
+    <!-- load polyfills and angular dependencies -->
+    <script src="client/node_modules/core-js/client/shim.min.js"></script>
+    <script src="client/node_modules/zone.js/dist/zone.js"></script>
+    <script src="client/node_modules/reflect-metadata/Reflect.js"></script>
+
+    <!-- load our angular app with systemjs -->
+    <script src="client/node_modules/systemjs/dist/system.src.js"></script>
+    <script src="client/systemjs.config.js"></script>
+    <script>
+        System.import('client').catch(function(err) { console.error(err); });
+    </script>
+</head>
+<body class="container">
+
+    <my-app></my-app>
+    
+</body>
 </html>

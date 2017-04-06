@@ -1,10 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var ConfigProvider = (function () {
-    function ConfigProvider() {
-    }
-    return ConfigProvider;
-}());
+class ConfigProvider {
+}
 ConfigProvider.type = 'mysql';
 ConfigProvider.host = 'localhost';
 ConfigProvider.port = 3306;

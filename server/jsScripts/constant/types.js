@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var TYPES = {
+const TYPES = {
     UserService: Symbol('UserService'),
     DatabaseProvider: Symbol("DatabaseProvider"),
     ConfigProvider: Symbol("ConfigProvider")

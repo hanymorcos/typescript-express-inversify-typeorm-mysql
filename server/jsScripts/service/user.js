@@ -6,59 +6,55 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var inversify_1 = require("inversify");
-var t_user_1 = require("../entity/t_user");
-var typeorm_1 = require("typeorm");
-var UserService = (function () {
-    function UserService() {
-    }
-    UserService.prototype.getUsers = function () {
-        var usersPr = typeorm_1.getEntityManager().getRepository(t_user_1.User).find();
-        usersPr.then(function (users) {
+const inversify_1 = require("inversify");
+const t_user_1 = require("../entity/t_user");
+const typeorm_1 = require("typeorm");
+let UserService = class UserService {
+    getUsers() {
+        let usersPr = typeorm_1.getEntityManager().getRepository(t_user_1.User).find();
+        usersPr.then((users) => {
             var userList = [];
-            for (var _i = 0, users_1 = users; _i < users_1.length; _i++) {
-                var user = users_1[_i];
+            for (let user of users) {
                 userList.push({ email: user.email, name: user.name });
             }
             return userList;
         });
         return usersPr;
-    };
-    UserService.prototype.getUser = function (id) {
-        var user = typeorm_1.getEntityManager().getRepository(t_user_1.User).findOne({ email: id });
-        user.then(function (u) { return { email: u.email, name: u.name }; });
+    }
+    getUser(id) {
+        let user = typeorm_1.getEntityManager().getRepository(t_user_1.User).findOne({ email: id });
+        user.then((u) => { return { email: u.email, name: u.name }; });
         return user;
-    };
-    UserService.prototype.newUser = function (user) {
-        return new Promise(function (resolve, reject) {
-            var uentity = new t_user_1.User();
+    }
+    newUser(user) {
+        return new Promise((resolve, reject) => {
+            let uentity = new t_user_1.User();
             uentity.email = user.email;
             uentity.name = user.name;
-            var e = typeorm_1.getEntityManager().getRepository(t_user_1.User).persist(uentity);
+            let e = typeorm_1.getEntityManager().getRepository(t_user_1.User).persist(uentity);
             resolve(user);
         });
-    };
-    UserService.prototype.updateUser = function (id, name) {
+    }
+    updateUser(id, name) {
         var userRepository = typeorm_1.getEntityManager().getRepository(t_user_1.User);
         var userT = userRepository.findOne({ email: id });
-        userT.then(function (u) {
-            var uentity = new t_user_1.User();
+        userT.then((u) => {
+            let uentity = new t_user_1.User();
             uentity.email = id;
             uentity.name = name;
             userRepository.persist(uentity);
         });
         return userT;
-    };
-    UserService.prototype.deleteUser = function (id) {
+    }
+    deleteUser(id) {
         var userRepository = typeorm_1.getEntityManager().getRepository(t_user_1.User);
         var userT = userRepository.findOne({ email: id });
-        userT.then(function (u) {
+        userT.then((u) => {
             userRepository.remove(u);
         });
         return userT;
-    };
-    return UserService;
-}());
+    }
+};
 UserService = __decorate([
     inversify_1.injectable()
 ], UserService);
