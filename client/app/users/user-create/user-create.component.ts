@@ -7,7 +7,7 @@ import { UserService } from '../../shared/services/user.service';
   templateUrl: 'client/app/users/user-create/user-create.component.html'
 })
 export class UserCreateComponent implements OnInit {
-  user: User = { name: '', username: '', avatar: '' };
+  user: User = { email: '', name: '' };
   successMessage: string = '';
   errorMessage: string = '';
 

@@ -31,7 +31,7 @@ export class UserService {
   /**
    * Get a single user
    */
-  getUser(id: number): Observable<User> {
+  getUser(id: string): Observable<User> {
     // attaching a token
     let headers = new Headers();
     let token   = localStorage.getItem('auth_token');
@@ -58,7 +58,7 @@ export class UserService {
    * Update the user
    */
   updateUser(user: User): Observable<User> {
-    return this.http.put(`${this.usersUrl}/${user.id}`, user)
+    return this.http.put(`${this.usersUrl}/${user.email}`, user)
       .map(res => res.json())
       .catch(this.handleError);
   }
@@ -66,7 +66,7 @@ export class UserService {
   /**
    * Delete the user
    */
-  deleteUser(id: number): Observable<any> {
+  deleteUser(id: string): Observable<any> {
     return this.http.delete(`${this.usersUrl}/${id}`)
       .do(res => this.userDeleted())
       .catch(this.handleError);
@@ -91,10 +91,8 @@ export class UserService {
    */
   private toUser(user): User {
     return {
-      id: user.id,
-      name: `${user.first_name} ${user.last_name}`,
-      username: user.first_name,
-      avatar: user.avatar
+      name: `${user.name}`,
+      email: user.email
     };
   }
 

@@ -28,7 +28,7 @@ export class UserSingleComponent implements OnInit {
    * Delete a user
    */
   deleteUser() {
-    this.service.deleteUser(this.user.id)
+    this.service.deleteUser(this.user.email)
       .subscribe(data => {
         console.log('user was deleted');
         // route back to the users page

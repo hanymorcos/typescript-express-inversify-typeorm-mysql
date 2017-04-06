@@ -8,10 +8,10 @@
 
   <div class="col-sm-4" *ngFor="let user of users">
 
-    <div class="user-card text-center" [routerLink]="['/users', user.id]">
+    <div class="user-card text-center" [routerLink]="['/users', user.email]">
       <img [src]="user.avatar" class="user-avatar img-rounded">
 
-      <h2>{{ user.name }} <small>{{ user.username }}</small></h2>
+      <h2>{{ user.name }} <small>{{ user.email }}</small></h2>
     </div>
 
   </div>

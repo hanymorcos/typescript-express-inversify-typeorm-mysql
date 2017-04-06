@@ -16,7 +16,7 @@ let UserCreateComponent = class UserCreateComponent {
     constructor(service, router) {
         this.service = service;
         this.router = router;
-        this.user = { name: '', username: '', avatar: '' };
+        this.user = { email: '', name: '' };
         this.successMessage = '';
         this.errorMessage = '';
     }
