@@ -44,7 +44,7 @@ AppComponent = __decorate([
           </div>
 
           <ul class="nav navbar-nav"> 
-            <li><a routerLink="/users">Users</a></li>
+            <li><a routerLink="client/users">Users</a></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">

@@ -24,7 +24,7 @@ let UserService = class UserService {
     }
     getUsers() {
         return this.http.get(this.usersUrl)
-            .map(res => res.json().data)
+            .map(res => res.json())
             .map(users => users.map(this.toUser))
             .catch(this.handleError);
     }
@@ -34,7 +34,7 @@ let UserService = class UserService {
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', `Bearer ${token}`);
         return this.http.get(`${this.usersUrl}/${id}`, { headers })
-            .map(res => res.json().data)
+            .map(res => res.json())
             .map(this.toUser)
             .catch(this.handleError);
     }
@@ -62,7 +62,7 @@ let UserService = class UserService {
     }
     toUser(user) {
         return {
-            name: `${user.name}`,
+            name: user.name,
             email: user.email
         };
     }

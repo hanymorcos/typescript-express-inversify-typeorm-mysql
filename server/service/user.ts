@@ -15,24 +15,24 @@ export class UserService {
 
   public getUsers(): Promise<IUser[]> {
    let usersPr =  getEntityManager().getRepository(User).find();
-    usersPr.then((users) => {
+   let returnType = usersPr.then((users) => {
          var userList : IUser[] = [];
          for (let user of users)
           {
             userList.push({email:user.email, name: user.name});
           }
           return userList;
-    });
+    }).catch(console.log.bind(console));
 
-    return usersPr; 
+    return returnType; 
   }
 
   public getUser(id: string): Promise<IUser> {
    
      let user =  getEntityManager().getRepository(User).findOne({email:id});
-     user.then((u)=> {  return  {email: u.email, name: u.name}});
+     let returnType = user.then((u)=> {  return  {email: u.email, name: u.name}});
 
-   return user; 
+   return returnType; 
   }
 
   public newUser(user: IUser): Promise<IUser> {
@@ -49,18 +49,19 @@ export class UserService {
   public updateUser(id: string, name: string): Promise<IUser> {
    var userRepository = getEntityManager().getRepository(User);
    var userT = userRepository.findOne({email:id});
-    userT.then((u) => {
+   var returnType = userT.then((u) => {
       
        let uentity: User = new User();
        uentity.email  = id;
        uentity.name = name;
        userRepository.persist(uentity);
+       return {email:id,name:name};
     });
     
-    return userT;
+    return returnType;
   }
 
-  public deleteUser(id: string) : Promise<IUser>{
+  public deleteUser(id: string) {
   var userRepository = getEntityManager().getRepository(User);
    var userT = userRepository.findOne({email:id});
     userT.then((u) => {
@@ -68,7 +69,6 @@ export class UserService {
     });
 
 
-    return userT;
 
   }
 }

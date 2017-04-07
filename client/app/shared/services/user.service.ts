@@ -23,7 +23,7 @@ export class UserService {
    */
   getUsers(): Observable<User[]> {
     return this.http.get(this.usersUrl)
-      .map(res => res.json().data)
+      .map(res => res.json())
       .map(users => users.map(this.toUser))
       .catch(this.handleError);
   }
@@ -39,7 +39,7 @@ export class UserService {
     headers.append('Authorization', `Bearer ${token}`);
 
     return this.http.get(`${this.usersUrl}/${id}`, { headers })
-      .map(res => res.json().data)
+      .map(res => res.json())
       .map(this.toUser)
       .catch(this.handleError);
   }
@@ -91,7 +91,7 @@ export class UserService {
    */
   private toUser(user): User {
     return {
-      name: `${user.name}`,
+      name: user.name,
       email: user.email
     };
   }

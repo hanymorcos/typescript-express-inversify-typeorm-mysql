@@ -12,19 +12,19 @@ const typeorm_1 = require("typeorm");
 let UserService = class UserService {
     getUsers() {
         let usersPr = typeorm_1.getEntityManager().getRepository(t_user_1.User).find();
-        usersPr.then((users) => {
+        let returnType = usersPr.then((users) => {
             var userList = [];
             for (let user of users) {
                 userList.push({ email: user.email, name: user.name });
             }
             return userList;
-        });
-        return usersPr;
+        }).catch(console.log.bind(console));
+        return returnType;
     }
     getUser(id) {
         let user = typeorm_1.getEntityManager().getRepository(t_user_1.User).findOne({ email: id });
-        user.then((u) => { return { email: u.email, name: u.name }; });
-        return user;
+        let returnType = user.then((u) => { return { email: u.email, name: u.name }; });
+        return returnType;
     }
     newUser(user) {
         return new Promise((resolve, reject) => {
@@ -38,13 +38,14 @@ let UserService = class UserService {
     updateUser(id, name) {
         var userRepository = typeorm_1.getEntityManager().getRepository(t_user_1.User);
         var userT = userRepository.findOne({ email: id });
-        userT.then((u) => {
+        var returnType = userT.then((u) => {
             let uentity = new t_user_1.User();
             uentity.email = id;
             uentity.name = name;
             userRepository.persist(uentity);
+            return { email: id, name: name };
         });
-        return userT;
+        return returnType;
     }
     deleteUser(id) {
         var userRepository = typeorm_1.getEntityManager().getRepository(t_user_1.User);
@@ -52,7 +53,6 @@ let UserService = class UserService {
         userT.then((u) => {
             userRepository.remove(u);
         });
-        return userT;
     }
 };
 UserService = __decorate([
