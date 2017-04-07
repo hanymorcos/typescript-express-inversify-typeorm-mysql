@@ -38,7 +38,7 @@ let UserEditComponent = class UserEditComponent {
 };
 UserEditComponent = __decorate([
     core_1.Component({
-        templateUrl: 'client/app/users/user-edit/user-edit.component.html'
+        templateUrl: 'app/users/user-edit/user-edit.component.html'
     }),
     __metadata("design:paramtypes", [user_service_1.UserService, router_1.ActivatedRoute])
 ], UserEditComponent);

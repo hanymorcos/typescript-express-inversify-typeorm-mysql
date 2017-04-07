@@ -33,7 +33,7 @@ let UserSingleComponent = class UserSingleComponent {
 };
 UserSingleComponent = __decorate([
     core_1.Component({
-        templateUrl: 'client/app/users/user-single/user-single.component.html'
+        templateUrl: 'app/users/user-single/user-single.component.html'
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute,
         router_1.Router,

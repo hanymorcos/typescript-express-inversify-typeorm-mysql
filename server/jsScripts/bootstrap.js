@@ -48,7 +48,7 @@ class Startup {
                 extended: true
             }));
             app.use(bodyParser.json());
-            app.use('/client', express.static(path_1.join(__dirname, '../../client')));
+            app.use(express.static(path_1.join(__dirname, '../../client')));
         });
         let app = server.build();
         app.listen(3000);

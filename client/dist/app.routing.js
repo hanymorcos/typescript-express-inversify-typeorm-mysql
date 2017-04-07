@@ -9,11 +9,6 @@ const user_create_component_1 = require("./users/user-create/user-create.compone
 const login_component_1 = require("./login/login.component");
 exports.routes = [
     {
-        path: 'client',
-        redirectTo: 'users',
-        pathMatch: 'full'
-    },
-    {
         path: '',
         redirectTo: 'users',
         pathMatch: 'full'

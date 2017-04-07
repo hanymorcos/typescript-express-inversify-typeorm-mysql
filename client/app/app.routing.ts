@@ -8,11 +8,6 @@ import { UserCreateComponent } from './users/user-create/user-create.component';
 import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
-    {
-    path: 'client',
-    redirectTo: 'users',
-    pathMatch: 'full'
-  },
   {
     path: '',
     redirectTo: 'users',

@@ -3,7 +3,7 @@ import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'my-users',
-  templateUrl: 'client/app/users/users.component.html'
+  templateUrl: 'app/users/users.component.html'
 })
 export class UsersComponent implements OnInit {
   successMessage: string = '';

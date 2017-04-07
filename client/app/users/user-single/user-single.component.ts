@@ -4,7 +4,7 @@ import { User } from '../../shared/models/user';
 import { UserService } from '../../shared/services/user.service';
 
 @Component({
-  templateUrl: 'client/app/users/user-single/user-single.component.html'
+  templateUrl: 'app/users/user-single/user-single.component.html'
 })
 export class UserSingleComponent implements OnInit {
   user: User;

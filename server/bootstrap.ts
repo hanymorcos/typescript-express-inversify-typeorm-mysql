@@ -59,7 +59,7 @@ class Startup
                     }));
                     app.use(bodyParser.json());
                     
-                    app.use('/client', express.static(join(__dirname, '../../client')));
+                    app.use(express.static(join(__dirname, '../../client')));
                   });
 
                 let app = server.build();

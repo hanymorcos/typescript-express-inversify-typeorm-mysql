@@ -4,7 +4,7 @@ import { User } from '../../shared/models/user';
 import { UserService } from '../../shared/services/user.service';
 
 @Component({
-  templateUrl: 'client/app/users/user-create/user-create.component.html'
+  templateUrl: 'app/users/user-create/user-create.component.html'
 })
 export class UserCreateComponent implements OnInit {
   user: User = { email: '', name: '' };

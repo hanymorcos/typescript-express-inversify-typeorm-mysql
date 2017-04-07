@@ -37,7 +37,7 @@ let UsersComponent = class UsersComponent {
 UsersComponent = __decorate([
     core_1.Component({
         selector: 'my-users',
-        templateUrl: 'client/app/users/users.component.html'
+        templateUrl: 'app/users/users.component.html'
     }),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], UsersComponent);

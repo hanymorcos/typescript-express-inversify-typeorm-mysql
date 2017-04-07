@@ -6,7 +6,7 @@ import { User } from '../../shared/models/user';
   styles: [`
     .user-card { cursor: pointer; } 
   `],
-  templateUrl: 'client/app/users/user-list/user-list.component.html'
+  templateUrl: 'app/users/user-list/user-list.component.html'
 })
 export class UserListComponent implements OnInit {
   users: User[];

@@ -35,7 +35,7 @@ let LoginComponent = class LoginComponent {
 };
 LoginComponent = __decorate([
     core_1.Component({
-        templateUrl: 'client/app/login/login.component.html'
+        templateUrl: 'app/login/login.component.html'
     }),
     __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
 ], LoginComponent);

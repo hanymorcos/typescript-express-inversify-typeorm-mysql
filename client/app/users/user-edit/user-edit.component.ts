@@ -4,7 +4,7 @@ import { UserService } from '../../shared/services/user.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  templateUrl: 'client/app/users/user-edit/user-edit.component.html'
+  templateUrl: 'app/users/user-edit/user-edit.component.html'
 })
 export class UserEditComponent implements OnInit {
   user: User;

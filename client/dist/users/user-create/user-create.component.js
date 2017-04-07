@@ -35,7 +35,7 @@ let UserCreateComponent = class UserCreateComponent {
 };
 UserCreateComponent = __decorate([
     core_1.Component({
-        templateUrl: 'client/app/users/user-create/user-create.component.html'
+        templateUrl: 'app/users/user-create/user-create.component.html'
     }),
     __metadata("design:paramtypes", [user_service_1.UserService, router_1.Router])
 ], UserCreateComponent);
