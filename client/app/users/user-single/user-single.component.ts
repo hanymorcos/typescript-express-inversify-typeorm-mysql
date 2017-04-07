@@ -32,7 +32,7 @@ export class UserSingleComponent implements OnInit {
       .subscribe(data => {
         console.log('user was deleted');
         // route back to the users page
-        this.router.navigate(['/users']);
+        this.router.navigate(['/client/users']);
       });
   }
 

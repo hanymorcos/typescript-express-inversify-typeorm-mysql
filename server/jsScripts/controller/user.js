@@ -49,7 +49,9 @@ let UserController = class UserController {
         });
     }
     deleteUser(request) {
-        this.userService.deleteUser(request.params.id);
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.userService.deleteUser(request.params.id);
+        });
     }
 };
 __decorate([
@@ -80,7 +82,7 @@ __decorate([
     inversify_express_utils_1.Delete('/:id'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UserController.prototype, "deleteUser", null);
 UserController = __decorate([
     inversify_1.injectable(),

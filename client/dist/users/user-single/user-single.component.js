@@ -27,7 +27,7 @@ let UserSingleComponent = class UserSingleComponent {
         this.service.deleteUser(this.user.email)
             .subscribe(data => {
             console.log('user was deleted');
-            this.router.navigate(['/users']);
+            this.router.navigate(['/client/users']);
         });
     }
 };

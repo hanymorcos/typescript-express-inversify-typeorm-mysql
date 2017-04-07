@@ -67,7 +67,7 @@ export class UserService {
    * Delete the user
    */
   deleteUser(id: string): Observable<any> {
-    return this.http.delete(`${this.usersUrl}/${id}`)
+    return this.http.delete(`${this.usersUrl}/${id}`,{method:"DELETE"})
       .do(res => this.userDeleted())
       .catch(this.handleError);
   }

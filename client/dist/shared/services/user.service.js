@@ -50,7 +50,7 @@ let UserService = class UserService {
             .catch(this.handleError);
     }
     deleteUser(id) {
-        return this.http.delete(`${this.usersUrl}/${id}`)
+        return this.http.delete(`${this.usersUrl}/${id}`, { method: "DELETE" })
             .do(res => this.userDeleted())
             .catch(this.handleError);
     }
