@@ -40,5 +40,5 @@ exports.routes = [
         ]
     }
 ];
-exports.routing = router_1.RouterModule.forRoot(exports.routes);
+exports.routing = router_1.RouterModule.forRoot(exports.routes, { useHash: true });
 //# sourceMappingURL=app.routing.js.map
