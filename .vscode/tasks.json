@@ -1,9 +1,15 @@
+
 {
     "version": "0.1.0",
-    "command": "sh",
-    "args": ["-c", "tsc -p ./client  && tsc -p ./server"],
-    "isShellCommand": true,
-    "isBuildCommand":true,
-    "showOutput": "always",
-    "echoCommand": true
+    "command": "tsc",
+    "tasks": [
+        {
+            "taskName": "Build the examples",
+            "suppressTaskName": true, 
+            "isBuildCommand": true,   
+            "command": "sh",
+            "args": ["-c", "tsc -p ./client  && tsc -p ./server"],
+            "problemMatcher": "$tsc"
+        }  
+    ]
 }

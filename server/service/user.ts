@@ -10,9 +10,6 @@ export interface IUser {
 
 @injectable()
 export class UserService {
-  
-
-
   public getUsers(): Promise<IUser[]> {
    let usersPr =  getEntityManager().getRepository(User).find();
    let returnType = usersPr.then((users) => {
