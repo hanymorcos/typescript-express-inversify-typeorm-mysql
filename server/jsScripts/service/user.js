@@ -15,15 +15,15 @@ let UserService = class UserService {
         let returnType = usersPr.then((users) => {
             var userList = [];
             for (let user of users) {
-                userList.push({ email: user.email, name: user.name });
+                userList.push({ id: user.id, email: user.email, name: user.name });
             }
             return userList;
         }).catch(console.log.bind(console));
         return returnType;
     }
     getUser(id) {
-        let user = typeorm_1.getEntityManager().getRepository(t_user_1.User).findOne({ email: id });
-        let returnType = user.then((u) => { return { email: u.email, name: u.name }; });
+        let user = typeorm_1.getEntityManager().getRepository(t_user_1.User).findOne({ id: id });
+        let returnType = user.then((u) => { return { id: u.id, email: u.email, name: u.name }; });
         return returnType;
     }
     newUser(user) {
@@ -35,21 +35,20 @@ let UserService = class UserService {
             resolve(user);
         });
     }
-    updateUser(id, name) {
+    updateUser(id, name, email) {
         var userRepository = typeorm_1.getEntityManager().getRepository(t_user_1.User);
-        var userT = userRepository.findOne({ email: id });
+        var userT = userRepository.findOne({ id: id });
         var returnType = userT.then((u) => {
-            let uentity = new t_user_1.User();
-            uentity.email = id;
-            uentity.name = name;
-            userRepository.persist(uentity);
-            return { email: id, name: name };
+            u.email = email;
+            u.name = name;
+            userRepository.persist(u);
+            return { id: u.id, email: email, name: name };
         });
         return returnType;
     }
     deleteUser(id) {
         var userRepository = typeorm_1.getEntityManager().getRepository(t_user_1.User);
-        var userT = userRepository.findOne({ email: id });
+        var userT = userRepository.findOne({ id: id });
         userT.then((u) => {
             userRepository.remove(u);
         });

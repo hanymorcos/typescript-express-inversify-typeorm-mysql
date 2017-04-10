@@ -8,6 +8,7 @@ import { UserService } from '../../shared/services/user.service';
 })
 export class UserSingleComponent implements OnInit {
   user: User;
+  successMessage: string = '';
 
   constructor(
     private route: ActivatedRoute, 
@@ -28,11 +29,12 @@ export class UserSingleComponent implements OnInit {
    * Delete a user
    */
   deleteUser() {
-    this.service.deleteUser(this.user.email)
+    this.service.deleteUser(this.user.id)
       .subscribe(data => {
+        this.successMessage = 'user was deleted!';
         console.log('user was deleted');
         // route back to the users page
-        this.router.navigate(['/client/users']);
+        this.router.navigate(['/']);
       });
   }
 

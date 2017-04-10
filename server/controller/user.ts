@@ -28,7 +28,7 @@ export class UserController {
 
   @Put('/:id')
   public async updateUser(request: Request): Promise<IUser> {
-    return await this.userService.updateUser(request.body.email, request.body.name);
+    return await this.userService.updateUser(request.params.id, request.body.name, request.body.email);
   }
 
   @Delete('/:id')
