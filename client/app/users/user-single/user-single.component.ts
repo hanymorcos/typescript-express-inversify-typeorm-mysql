@@ -34,7 +34,7 @@ export class UserSingleComponent implements OnInit {
         this.successMessage = 'user was deleted!';
         console.log('user was deleted');
         // route back to the users page
-        this.router.navigate(['/']);
+        this.router.navigate(['/users']);
       });
   }
 
