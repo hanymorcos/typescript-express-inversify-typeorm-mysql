@@ -45,7 +45,7 @@ let UserController = class UserController {
     }
     updateUser(request) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.userService.updateUser(request.body.email, request.body.name);
+            return yield this.userService.updateUser(request.params.id, request.body.name, request.body.email);
         });
     }
     deleteUser(request) {

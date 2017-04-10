@@ -45,7 +45,7 @@ let UserService = class UserService {
             .catch(this.handleError);
     }
     updateUser(user) {
-        return this.http.put(`${this.usersUrl}/${user.email}`, user)
+        return this.http.put(`${this.usersUrl}/${user.id}`, user)
             .map(res => res.json())
             .catch(this.handleError);
     }
@@ -62,6 +62,7 @@ let UserService = class UserService {
     }
     toUser(user) {
         return {
+            id: user.id,
             name: user.name,
             email: user.email
         };

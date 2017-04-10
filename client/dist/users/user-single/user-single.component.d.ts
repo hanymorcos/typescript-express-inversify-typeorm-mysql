@@ -7,6 +7,7 @@ export declare class UserSingleComponent implements OnInit {
     private router;
     private service;
     user: User;
+    successMessage: string;
     constructor(route: ActivatedRoute, router: Router, service: UserService);
     ngOnInit(): void;
     deleteUser(): void;

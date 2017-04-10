@@ -17,6 +17,7 @@ let UserSingleComponent = class UserSingleComponent {
         this.route = route;
         this.router = router;
         this.service = service;
+        this.successMessage = '';
     }
     ngOnInit() {
         let id = this.route.snapshot.params['id'];
@@ -24,10 +25,11 @@ let UserSingleComponent = class UserSingleComponent {
             .subscribe(user => this.user = user);
     }
     deleteUser() {
-        this.service.deleteUser(this.user.email)
+        this.service.deleteUser(this.user.id)
             .subscribe(data => {
+            this.successMessage = 'user was deleted!';
             console.log('user was deleted');
-            this.router.navigate(['/client/users']);
+            this.router.navigate(['/']);
         });
     }
 };

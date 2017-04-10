@@ -4,6 +4,7 @@ import { getEntityManager } from 'typeorm';
 import TYPES from '../constant/types'
 
 export interface IUser {
+  id: number;
   email: string;
   name: string;
 }
@@ -16,7 +17,7 @@ export class UserService {
          var userList : IUser[] = [];
          for (let user of users)
           {
-            userList.push({email:user.email, name: user.name});
+            userList.push({id: user.id, email:user.email, name: user.name});
           }
           return userList;
     }).catch(console.log.bind(console));
@@ -26,33 +27,30 @@ export class UserService {
 
   public getUser(id: string): Promise<IUser> {
    
-     let user =  getEntityManager().getRepository(User).findOne({email:id});
-     let returnType = user.then((u)=> {  return  {email: u.email, name: u.name}});
+     let user =  getEntityManager().getRepository(User).findOne({id:id});
+     let returnType = user.then((u)=> {  return  {id: u.id, email: u.email, name: u.name}});
 
    return returnType; 
   }
 
   public newUser(user: IUser): Promise<IUser> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {      
        let uentity: User = new User();
        uentity.email  = user.email;
        uentity.name = user.name;
-       let e =  getEntityManager().getRepository(User).persist(uentity);
-       
+       let e =  getEntityManager().getRepository(User).persist(uentity);       
        resolve(user);
   });
   }
 
-  public updateUser(id: string, name: string): Promise<IUser> {
+  public updateUser(id: number, name: string, email: string): Promise<IUser> {
    var userRepository = getEntityManager().getRepository(User);
-   var userT = userRepository.findOne({email:id});
+   var userT = userRepository.findOne({id:id});
    var returnType = userT.then((u) => {
-      
-       let uentity: User = new User();
-       uentity.email  = id;
-       uentity.name = name;
-       userRepository.persist(uentity);
-       return {email:id,name:name};
+       u.email  = email;
+       u.name = name;
+       userRepository.persist(u);
+       return {id: u.id, email:email, name:name};
     });
     
     return returnType;
@@ -60,7 +58,7 @@ export class UserService {
 
   public deleteUser(id: string) {
   var userRepository = getEntityManager().getRepository(User);
-   var userT = userRepository.findOne({email:id});
+   var userT = userRepository.findOne({id:id});
     userT.then((u) => {
        userRepository.remove(u);
     });

@@ -29,7 +29,7 @@ export class UserSingleComponent implements OnInit {
    * Delete a user
    */
   deleteUser() {
-    this.service.deleteUser(this.user.email)
+    this.service.deleteUser(this.user.id)
       .subscribe(data => {
         this.successMessage = 'user was deleted!';
         console.log('user was deleted');
